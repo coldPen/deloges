@@ -11,8 +11,6 @@ const { USER_TYPES, JWT_SECRET } = require('../../constants');
 const dislodgedSignup = async (req, res) => {
   const { token, password } = req.body;
 
-  console.log(req.body, token, password);
-
   try {
     jwt.verify(token, JWT_SECRET);
   } catch (e) {
