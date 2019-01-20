@@ -37,19 +37,19 @@ $ npm run hash-password mot-de-passe-en-clair
 ### /api
 
 Contient tous les controllers lié à l'api.  
-[En savoir plus](./api/README.md)
+[En savoir plus](./server/api/README.md)
 
 ### /controllers
 
 Un controller est une fonction qui réalise une ou des opérations relative(s) à la requête et/ou la réponse.  
 Le controller renvoie la réponse à la fin de son traitement.  
-[En savoir plus](./controllers/README.md)
+[En savoir plus](./server/controllers/README.md)
 
 ### /middlewares
 
 Contient tous les middlewares de l'application. Un middleware est une fonction qui fait une ou des opérations relative(s) à la requête et/ou la réponse.  
 Le middleware ne renvoie pas la réponse, il lance l'exécution du middleware/controller suivant ou lance une erreur.  
-[En savoir plus](./middlewares/README.md)
+[En savoir plus](./server/middlewares/README.md)
 
 ### /public
 
