@@ -4,6 +4,7 @@ const DEV_ENV = process.env.NODE_ENV !== 'production';
 const PORT = process.env.PORT || 3000;
 const CORS_ORIGIN = process.env.CORS_ORIGIN || `http://localhost:${PORT}`;
 const COOKIE_SECRET = process.env.COOKIE_SECRET || 'temporary-cookie-secret';
+const JWT_SECRET = process.env.JWT_SECRET || 'temporary-jwt-secret';
 
 const DB_NAME = process.env.DB_NAME || 'aouf_app';
 const DB_HOST = process.env.DB_HOST || 'localhost';
@@ -21,6 +22,7 @@ const USER_TYPES = {
 module.exports = {
   DEV_ENV,
   COOKIE_SECRET,
+  JWT_SECRET,
   CORS_ORIGIN,
   PORT,
   DB_NAME,
