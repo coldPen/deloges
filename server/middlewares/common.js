@@ -1,10 +1,10 @@
-const express = require('express');
+const Router = require('express-promise-router');
 const session = require('express-session');
 const cors = require('cors');
 const morgan = require('morgan');
 const { DEV_ENV, COOKIE_SECRET, CORS_ORIGIN } = require('../constants');
 
-const commonMiddleware = express.Router();
+const commonMiddleware = Router();
 
 /* Request logger */
 commonMiddleware.use(morgan(DEV_ENV ? 'dev' : 'combined'));

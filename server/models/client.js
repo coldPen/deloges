@@ -44,4 +44,4 @@ const first = queryBuilder =>
     ([res]) => res
   );
 
-module.exports = { query, paginate, first };
+module.exports = { client, query, paginate, first };

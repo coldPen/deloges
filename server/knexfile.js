@@ -31,6 +31,6 @@ module.exports = {
     debug: console.log
     /* eslint-enable no-console */
   },
-  postProcessResponse: (res, { postProcess }) =>
+  postProcessResponse: (res, { postProcess } = {}) =>
     postProcess ? postProcess(res) : res
 };

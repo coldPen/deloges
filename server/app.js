@@ -1,5 +1,7 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
+const Router = require('express-promise-router');
 const api = require('./api');
 const commonMiddleware = require('./middlewares/common');
 // const headController = require('./controllers/head');
@@ -8,15 +10,20 @@ const unlogedInviteController = require('./controllers/invitation-deloge');
 const volunteerSignupController = require('./controllers/inscription-benevole');
 
 const app = express();
+const router = Router();
 nunjucks.configure('views', {
   autoescape: true,
   express: app
 });
 app.use(commonMiddleware);
-app.use('/api/v1', api);
-app.use('/assets', express.static('public'));
+app.use(router);
+
+router.use('/api/v1', bodyParser.json(), api);
+
 app.use('/helloworld', helloWorldController);
 app.use('/invitation-deloge', unlogedInviteController);
 app.use('/inscription-benevole', volunteerSignupController);
+
+router.use('/assets', express.static('public'));
 
 module.exports = app;
