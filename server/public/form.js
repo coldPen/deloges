@@ -27,7 +27,7 @@ const formToJSON = elements =>
 
 const submitForm = event => {
   event.preventDefault();
-  const form = document.getElementById("parametres-benevole");
+  const form = document.getElementById("form");
   const data = formToJSON(form);
   console.log(data);
   fetch("/login", {

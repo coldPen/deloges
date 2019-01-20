@@ -11,15 +11,30 @@
     <title>Document</title>
   </head>
   <body>
-    <form action="" onsubmit="submitForm(event)" id="inscription-benevole">
+    <form action="" onsubmit="submitForm(event)" id="form">
       <h3>Créer un compte bénévole</h3>
       <label for="nom">Nom</label> <input type="text" name="nom" id="nom" />
       <label for="prenom">Prénom</label>
       <input type="text" name="prenom" id="prenom" />
       <label for="email">Email</label>
       <input type="email" name="email" id="email" />
+      <fieldset>
+        <legend>J'offre :</legend>
+        <input type="checkbox" id="restauration" name="restauration" />
+        <label for="restauration">Restauration</label>
+        <input type="checkbox" id="blanchisserie" name="blanchisserie" />
+        <label for="blanchisserie">Blanchisserie</label>
+        <input type="checkbox" id="mobilité" name="mobilité" />
+        <label for="mobilité">Mobilité</label>
+        <input type="checkbox" id="loisirs" name="loisirs" />
+        <label for="loisirs">Loisirs</label>
+        <input type="checkbox" id="Don" name="Don" />
+        <label for="Don">Don</label>
+        <input type="checkbox" id="autre" name="autre" />
+        <label for="autre">Autre(s) service(s)</label>
+      </fieldset>
       <button type="submit">Valider</button>
     </form>
-    <script src="inscription-benevole.js"></script>
+    <script src="form.js"></script>
   </body>
 </html>

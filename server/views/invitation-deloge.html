@@ -1,0 +1,21 @@
+{% extends "document.html" %} {% block body %}
+<form action="" onsubmit="submitForm(event)" id="form">
+  <h3>Créer un compte "délogé"</h3>
+  <fieldset>
+    <label for="nom">Nom</label> <input type="text" name="nom" id="nom" />
+    <label for="prenom">Prénom</label>
+    <input type="text" name="prenom" id="prenom" />
+  </fieldset>
+  <fieldset>
+    <legend>
+      Merci d'indiquer au minimum soit l'email, soit le numéro de téléphone :
+    </legend>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" />
+    <label for="tel">Téléphone</label>
+    <input type="tel" name="tel" id="tel" />
+  </fieldset>
+  <button type="submit">Générer une invitation</button>
+</form>
+<script src="/assets/form.js"></script>
+{% endblock %}
