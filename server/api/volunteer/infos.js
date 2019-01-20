@@ -1,9 +1,6 @@
-const express = require('express');
-const { readVolunteer } = require('../models/User');
+const { readVolunteer } = require('../../models/User');
 
-const apiVolunteer = express.Router();
-
-apiVolunteer.get('/infos/:volunteerId', async (req, res) => {
+const volunteerInfos = async (req, res) => {
   const { volunteerId } = req.params;
   const user = await readVolunteer(volunteerId);
 
@@ -16,6 +13,6 @@ apiVolunteer.get('/infos/:volunteerId', async (req, res) => {
     }) ||
       null
   );
-});
+};
 
-module.exports = apiVolunteer;
+module.exports = volunteerInfos;

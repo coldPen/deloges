@@ -30,7 +30,10 @@ const list = ({ userType, email, login, genre }, options) => {
   return qb;
 };
 
+const create = data => first(query(TABLE).insert(data));
+
 module.exports = {
+  create,
   read,
   readAdmin,
   readVolunteer,
