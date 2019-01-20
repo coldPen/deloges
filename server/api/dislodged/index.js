@@ -1,9 +1,14 @@
 const Router = require('express-promise-router');
+const requireAdminMiddleware = require('../../middlewares/requireAdmin');
 const dislodgedSignupToken = require('./signupToken');
 const dislodgedSignup = require('./signup');
 
-const apiVolunteer = Router();
-apiVolunteer.post('/signup-token', dislodgedSignupToken);
-apiVolunteer.post('/signup', dislodgedSignup);
+const apiDislodged = Router();
+apiDislodged.post(
+  '/signup-token',
+  requireAdminMiddleware,
+  dislodgedSignupToken
+);
+apiDislodged.post('/signup', dislodgedSignup);
 
-module.exports = apiVolunteer;
+module.exports = apiDislodged;
