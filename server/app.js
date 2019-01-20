@@ -20,9 +20,9 @@ app.use(router);
 
 router.use('/api/v1', bodyParser.json(), api);
 
-app.use('/helloworld', helloWorldController);
-app.use('/invitation-deloge', unlogedInviteController);
-app.use('/inscription-benevole', volunteerSignupController);
+router.use('/helloworld', helloWorldController);
+router.use('/invitation-deloge', unlogedInviteController);
+router.use('/inscription-benevole', volunteerSignupController);
 
 router.use('/assets', express.static('public'));
 
