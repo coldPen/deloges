@@ -42,7 +42,7 @@ const signupVolunteer = async ({ userName, email, password, phone }) => {
     email,
     phone,
     password: bcrypt.hashSync(password, 10),
-    isVolunteer: true
+    isVolunteer: true,
   });
 };
 
@@ -51,5 +51,5 @@ module.exports = {
   create,
   read,
   list,
-  signupVolunteer
+  signupVolunteer,
 };

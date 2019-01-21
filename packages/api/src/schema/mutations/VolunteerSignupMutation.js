@@ -9,27 +9,27 @@ const VolunteerSignupMutation = {
   args: {
     userName: {
       type: nonNull(GraphQLString),
-      description: 'User’s user name'
+      description: 'User’s user name',
     },
     email: {
       type: nonNull(GraphQLString),
-      description: 'User’s email'
+      description: 'User’s email',
     },
     password: {
       type: nonNull(GraphQLString),
-      description: 'User’s password'
+      description: 'User’s password',
     },
     phone: {
       type: GraphQLString,
-      description: 'User’s phone'
-    }
+      description: 'User’s phone',
+    },
   },
   resolve: async (root, { userName, email, password, phone }, req) => {
     const userId = await signupVolunteer({ userName, email, password, phone });
     req.setViewer({ userId });
 
     return req.getViewer();
-  }
+  },
 };
 
 module.exports = VolunteerSignupMutation;

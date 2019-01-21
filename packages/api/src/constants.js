@@ -19,7 +19,7 @@ const DB_ENABLE_SSL = process.env.DB_ENABLE_SSL || false;
 const USER_TYPES = {
   ADMIN: 'administrator',
   VOLUNTEER: 'volunteer',
-  DISLODGED: 'dislodged'
+  DISLODGED: 'dislodged',
 };
 
 module.exports = {
@@ -35,5 +35,5 @@ module.exports = {
   DB_USER,
   DB_PASSWORD,
   DB_ENABLE_SSL,
-  USER_TYPES
+  USER_TYPES,
 };

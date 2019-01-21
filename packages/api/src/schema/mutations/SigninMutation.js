@@ -9,12 +9,12 @@ const SigninMutation = {
   args: {
     email: {
       type: nonNull(GraphQLString),
-      description: 'User’s email'
+      description: 'User’s email',
     },
     password: {
       type: nonNull(GraphQLString),
-      description: 'User’s password'
-    }
+      description: 'User’s password',
+    },
   },
   resolve: async (root, { email, password }, req) => {
     const user = await authenticateUser({ email, password });
@@ -24,7 +24,7 @@ const SigninMutation = {
     }
 
     return req.getViewer();
-  }
+  },
 };
 
 module.exports = SigninMutation;

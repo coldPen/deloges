@@ -6,5 +6,5 @@ const listOf = type => nonNull(new GraphQLList(nonNull(type)));
 
 module.exports = {
   listOf,
-  nonNull
+  nonNull,
 };

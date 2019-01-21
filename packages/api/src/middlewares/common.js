@@ -19,8 +19,8 @@ commonMiddleware.use(
         callback(new Error(`Origin "${origin}"" not allowed by CORS`));
       }
     },
-    credentials: true
-  })
+    credentials: true,
+  }),
 );
 
 /* User session */
@@ -28,8 +28,8 @@ commonMiddleware.use(
   session({
     secret: COOKIE_SECRET,
     resave: false,
-    saveUninitialized: false
-  })
+    saveUninitialized: false,
+  }),
 );
 
 module.exports = commonMiddleware;

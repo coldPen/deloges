@@ -7,12 +7,11 @@ const ViewerType = new GraphQLObjectType({
   fields: () => ({
     id: globalIdField('Viewer'),
     user: {
-      // eslint-disable-next-line global-require
       type: require('./UserType'),
-      description: 'The spectator’s user if authenticated'
-    }
+      description: 'The spectator’s user if authenticated',
+    },
   }),
-  interfaces: [nodeInterface]
+  interfaces: [nodeInterface],
 });
 
 defineNodeType(ViewerType);

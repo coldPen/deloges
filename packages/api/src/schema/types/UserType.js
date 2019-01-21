@@ -8,46 +8,46 @@ const UserType = new GraphQLObjectType({
     id: globalIdField('User'),
     isAdmin: {
       type: GraphQLBoolean,
-      description: 'If the user is an admin'
+      description: 'If the user is an admin',
     },
     isDislodged: {
       type: GraphQLBoolean,
-      description: 'If the user is currently dislodged'
+      description: 'If the user is currently dislodged',
     },
     isVolunteer: {
       type: GraphQLBoolean,
-      description: 'If the user is a volunteer'
+      description: 'If the user is a volunteer',
     },
     email: {
       type: GraphQLString,
-      description: 'User’s email'
+      description: 'User’s email',
     },
     userName: {
       type: GraphQLString,
-      description: 'User’s user name'
+      description: 'User’s user name',
     },
     firstName: {
       type: GraphQLString,
-      description: 'User’s first name'
+      description: 'User’s first name',
     },
     lastName: {
       type: GraphQLString,
-      description: 'User’s last name'
+      description: 'User’s last name',
     },
     gender: {
       type: GraphQLString,
-      description: 'User’s gender'
+      description: 'User’s gender',
     },
     phone: {
       type: GraphQLString,
-      description: 'User’s phone'
+      description: 'User’s phone',
     },
     address: {
       type: GraphQLString,
-      description: 'User’s address'
-    }
+      description: 'User’s address',
+    },
   },
-  interfaces: [nodeInterface]
+  interfaces: [nodeInterface],
 });
 
 defineNodeType(UserType);

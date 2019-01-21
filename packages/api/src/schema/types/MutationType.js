@@ -8,6 +8,6 @@ module.exports = new GraphQLObjectType({
   fields: {
     signin: SigninMutation,
     signout: SignoutMutation,
-    volunteerSignup: VolunteerSignupMutation
-  }
+    volunteerSignup: VolunteerSignupMutation,
+  },
 });
