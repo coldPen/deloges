@@ -16,7 +16,6 @@ const handleError = error => {
 
 const addPostProcess = (queryBuilder, postProcess) => {
   const prevPostProcess = queryBuilder.postProcess;
-  // eslint-disable-next-line no-param-reassign
   queryBuilder.postProcess = res =>
     postProcess(prevPostProcess ? prevPostProcess(res) : res);
   queryBuilder.queryContext({ postProcess: queryBuilder.postProcess });
@@ -41,7 +40,7 @@ const paginate = (queryBuilder, { offset, limit } = {}) => {
 const first = queryBuilder =>
   addPostProcess(
     paginate(queryBuilder, { offset: 0, limit: 1 }),
-    ([res]) => res
+    ([res]) => res,
   );
 
 module.exports = { client, query, paginate, first };

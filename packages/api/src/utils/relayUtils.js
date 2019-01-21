@@ -1,6 +1,6 @@
 const {
   fromGlobalId: fromRelayId,
-  nodeDefinitions: relayNodeDefinitions
+  nodeDefinitions: relayNodeDefinitions,
 } = require('graphql-relay');
 const { INVALID_ARGUMENT_ERROR } = require('../errors');
 
@@ -11,7 +11,7 @@ const nodeDefinitions = () => {
 
   const graphqlNodeDefinitions = relayNodeDefinitions(
     (...args) => resolveNodeObject(defs, objectResolver, ...args),
-    typeResolver
+    typeResolver,
   );
 
   const createNodeResolver = resolve => {
@@ -20,7 +20,7 @@ const nodeDefinitions = () => {
     }
 
     return {
-      __resolveType: typeResolver
+      __resolveType: typeResolver,
     };
   };
 
@@ -31,7 +31,7 @@ const nodeDefinitions = () => {
       return type;
     },
     nodeFieldResolver: graphqlNodeDefinitions.nodeField.resolve,
-    createNodeResolver
+    createNodeResolver,
   };
 };
 
@@ -52,13 +52,13 @@ const defineNodeType = (defs, type) => {
 
   return {
     ...defs,
-    [type.name]: { type, Wrapper: getTypeWrapper(defs, type) }
+    [type.name]: { type, Wrapper: getTypeWrapper(defs, type) },
   };
 };
 
 const resolveNodeType = (defs, node) => {
   const def = Object.values(defs).find(
-    ({ Wrapper }) => node instanceof Wrapper
+    ({ Wrapper }) => node instanceof Wrapper,
   );
 
   if (!def) {
@@ -93,5 +93,5 @@ const fromGlobalId = (id, type) => {
 
 module.exports = {
   fromGlobalId,
-  nodeDefinitions
+  nodeDefinitions,
 };

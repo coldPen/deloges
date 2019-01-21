@@ -29,10 +29,8 @@
     "mysql2": "^1.6.4"
   },
   "devDependencies": {
+    "@fadioit/eslint-config": "^0.2.0",
     "eslint": "^5.12.1",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^3.6.0",
-    "eslint-plugin-prettier": "^3.0.1",
     "nodemon": "^1.18.9",
     "prettier": "^1.15.3"
   }

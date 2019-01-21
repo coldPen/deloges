@@ -10,7 +10,7 @@ module.exports = new GraphQLObjectType({
     viewer: {
       type: nonNull(ViewerType),
       description: 'The current user',
-      resolve: (root, args, req) => req.getViewer()
-    }
-  }
+      resolve: (root, args, req) => req.getViewer(),
+    },
+  },
 });

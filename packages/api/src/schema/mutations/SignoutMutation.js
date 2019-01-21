@@ -8,7 +8,7 @@ const SignoutMutation = {
     req.unsetViewer();
 
     return req.getViewer();
-  }
+  },
 };
 
 module.exports = SignoutMutation;

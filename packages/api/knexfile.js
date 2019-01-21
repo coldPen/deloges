@@ -4,7 +4,7 @@ const {
   DB_PORT,
   DB_USER,
   DB_PASSWORD,
-  DB_ENABLE_SSL
+  DB_ENABLE_SSL,
 } = require('./src/constants');
 
 module.exports = {
@@ -16,11 +16,11 @@ module.exports = {
     port: DB_PORT,
     user: DB_USER,
     password: DB_PASSWORD,
-    ssl: DB_ENABLE_SSL
+    ssl: DB_ENABLE_SSL,
   },
   pool: {
     min: 2,
-    max: 10
+    max: 10,
   },
   useNullAsDefault: true,
   log: {
@@ -28,9 +28,9 @@ module.exports = {
     warn: console.warn,
     error: console.error,
     deprecate: console.warn,
-    debug: console.log
+    debug: console.log,
     /* eslint-enable no-console */
   },
   postProcessResponse: (res, { postProcess } = {}) =>
-    postProcess ? postProcess(res) : res
+    postProcess ? postProcess(res) : res,
 };

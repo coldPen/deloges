@@ -11,9 +11,9 @@ const server = new ApolloServer({
     endpoint: GRAPHQL_ENDPOINT,
     settings: {
       'editor.cursorShape': 'line',
-      'request.credentials': 'include'
-    }
-  }
+      'request.credentials': 'include',
+    },
+  },
 });
 server.applyMiddleware({ app: graphqlController, path: '/' });
 
