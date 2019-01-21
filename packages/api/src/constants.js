@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 3000;
 const CORS_ORIGIN = process.env.CORS_ORIGIN || `http://localhost:${PORT}`;
 const COOKIE_SECRET = process.env.COOKIE_SECRET || 'temporary-cookie-secret';
 const JWT_SECRET = process.env.JWT_SECRET || 'temporary-jwt-secret';
+const GRAPHQL_ENDPOINT = '/graphql';
 
 /* DATABASE */
 const DB_NAME = process.env.DB_NAME || 'aouf_app';
@@ -27,6 +28,7 @@ module.exports = {
   JWT_SECRET,
   CORS_ORIGIN,
   PORT,
+  GRAPHQL_ENDPOINT,
   DB_NAME,
   DB_HOST,
   DB_PORT,
