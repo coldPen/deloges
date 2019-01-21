@@ -6,6 +6,7 @@ const CORS_ORIGIN = process.env.CORS_ORIGIN || `http://localhost:${PORT}`;
 const COOKIE_SECRET = process.env.COOKIE_SECRET || 'temporary-cookie-secret';
 const JWT_SECRET = process.env.JWT_SECRET || 'temporary-jwt-secret';
 
+/* DATABASE */
 const DB_NAME = process.env.DB_NAME || 'aouf_app';
 const DB_HOST = process.env.DB_HOST || 'localhost';
 const DB_PORT = process.env.DB_PORT || '8889';
@@ -13,6 +14,7 @@ const DB_USER = process.env.DB_USER || 'aouf';
 const DB_PASSWORD = process.env.DB_PASSWORD || 'aouf';
 const DB_ENABLE_SSL = process.env.DB_ENABLE_SSL || false;
 
+/* MODEL */
 const USER_TYPES = {
   ADMIN: 'administrator',
   VOLUNTEER: 'volunteer',
