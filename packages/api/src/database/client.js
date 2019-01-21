@@ -1,5 +1,5 @@
 const knex = require('knex');
-const config = require('../knexfile');
+const config = require('../../knexfile');
 const { DEV_ENV } = require('../constants');
 const { UNKNOWN_ERROR } = require('../errors');
 

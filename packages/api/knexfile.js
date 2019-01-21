@@ -5,7 +5,7 @@ const {
   DB_USER,
   DB_PASSWORD,
   DB_ENABLE_SSL
-} = require('./constants');
+} = require('./src/constants');
 
 module.exports = {
   client: 'mysql2',
