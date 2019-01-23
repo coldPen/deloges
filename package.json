@@ -6,5 +6,11 @@
     "packages": [
       "packages/*"
     ]
+  },
+  "scripts": {
+    "dev:web": "node scripts/dev-web"
+  },
+  "devDependencies": {
+    "stmux": "^1.6.1"
   }
 }
