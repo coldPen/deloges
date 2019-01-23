@@ -1,15 +1,15 @@
 const express = require('express');
 const Router = require('express-promise-router');
+const proxyController = require('http-proxy-middleware');
 
-const { GRAPHQL_ENDPOINT } = require('./constants');
+const { API_ENDPOINT } = require('./constants');
 const commonMiddleware = require('./middlewares/common');
-const viewerMiddleware = require('./middlewares/viewer');
-const graphqlController = require('./controllers/graphql');
 
 /* ROUTER */
 const router = Router();
 router.use(commonMiddleware);
-router.use(GRAPHQL_ENDPOINT, viewerMiddleware, graphqlController);
+router.use('/api', proxyController({ target: API_ENDPOINT }));
+router.use('/assets', express.static('public'));
 
 /* APP */
 const app = express();
