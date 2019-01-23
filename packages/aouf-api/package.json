@@ -1,5 +1,5 @@
 {
-  "name": "@aouf/api",
+  "name": "aouf-api",
   "version": "0.1.0",
   "description": "",
   "main": "src/index.js",
