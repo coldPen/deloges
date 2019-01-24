@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import App from './app';
 
-const Document = ({ id = 'app', body = '', links = [], scripts = [] }) => (
+const Document = ({ id = 'app', links = [], scripts = [] }) => (
   <html>
     <head>
       <title>App</title>
@@ -10,7 +11,9 @@ const Document = ({ id = 'app', body = '', links = [], scripts = [] }) => (
       ))}
     </head>
     <body>
-      <div id={id} dangerouslySetInnerHTML={{ __html: body }} />
+      <div id={id}>
+        <App />
+      </div>
       {scripts.map(script => (
         <script {...script} />
       ))}
@@ -20,7 +23,6 @@ const Document = ({ id = 'app', body = '', links = [], scripts = [] }) => (
 
 Document.propTypes = {
   id: PropTypes.string,
-  body: PropTypes.string,
   links: PropTypes.arrayOf(PropTypes.object),
   scripts: PropTypes.arrayOf(PropTypes.object),
 };

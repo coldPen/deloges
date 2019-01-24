@@ -24,39 +24,35 @@ const CLIENT_MANIFEST_PATH = path.resolve(
 );
 
 const loadClient = () => {
-  const { 'document.js': document, 'app.js': app } = JSON.parse(
+  const { 'main.js': component } = JSON.parse(
     fs.readFileSync(SERVER_MANIFEST_PATH, 'utf8'),
   );
   const { scripts } = JSON.parse(fs.readFileSync(CLIENT_MANIFEST_PATH, 'utf8'));
 
   return {
     scripts: JSON.parse(fs.readFileSync(CLIENT_MANIFEST_PATH, 'utf8')).scripts,
-    Document: require(path.resolve(`${BUNDLE_SERVER_PATH}/${document}`))
+    Component: require(path.resolve(`${BUNDLE_SERVER_PATH}/${component}`))
       .default,
-    App: require(path.resolve(`${BUNDLE_SERVER_PATH}/${app}`)).default,
   };
 };
 
 const client = loadClient();
 
 const renderController = (req, res) => {
-  const { Document, App, scripts } = DEV_ENV ? loadClient() : client;
-  const html = `<!doctype html>\n${renderToStaticMarkup(
-    React.createElement(Document, {
-      id: BUNDLE_DOM_NODE_ID,
-      body: renderToString(React.createElement(App)),
-      scripts: scripts.map(src => ({
-        src: `${BUNDLE_PUBLIC_PATH}/${src}`,
-        key: src,
-      })),
-    }),
-  )}`;
-  const styles = html.match(/<style.+\/style>/gi);
+  const { Component, scripts } = DEV_ENV ? loadClient() : client;
 
   res.send(
-    html
-      .replace(/<style.+\/style>/gi, '')
-      .replace(/<\/head>/, `${styles.join('\n')}</head>`),
+    `<!doctype html>\n${renderToString(
+      React.createElement(Component, {
+        id: BUNDLE_DOM_NODE_ID,
+        scripts: scripts.map(src => ({
+          src: `${BUNDLE_PUBLIC_PATH}/${src}`,
+          key: src,
+        })),
+      }),
+    )}`
+      // move styles from body to the head
+      .replace(/(<\/head>[\s]*<body[\s>].*)(<style.+\/style>)/gi, '$2$1'),
   );
 };
 

@@ -14,6 +14,7 @@ const {
 } = require('./src/constants');
 
 const commonConfig = {
+  mode: DEV_ENV ? 'development' : 'production',
   module: {
     rules: [
       {
@@ -38,8 +39,7 @@ const server = {
   name: 'server',
   target: 'node',
   entry: {
-    document: './src/client/document',
-    app: './src/client/app',
+    main: './src/client/document',
   },
   output: {
     ...commonConfig.output,
@@ -59,7 +59,7 @@ const client = {
   ...commonConfig,
   name: 'client',
   entry: {
-    main: ['./src/client'],
+    main: './src/client',
   },
   output: {
     ...commonConfig.output,
