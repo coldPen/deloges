@@ -38,19 +38,28 @@ const client = loadClient();
 
 const renderController = (req, res) => {
   const { Component, scripts } = DEV_ENV ? loadClient() : client;
+  const staticContext = {};
+  const output = `<!doctype html>\n${renderToString(
+    React.createElement(Component, {
+      staticContext,
+      location: req.url,
+      scripts: scripts.map(src => ({
+        src: `${BUNDLE_PUBLIC_PATH}/${src}`,
+        key: src,
+      })),
+    }),
+  )}`
+    // move styles from body to the head
+    .replace(/(<\/head>[\s]*<body[\s>].*)(<style.+\/style>)/gi, '$2$1');
 
-  res.send(
-    `<!doctype html>\n${renderToString(
-      React.createElement(Component, {
-        scripts: scripts.map(src => ({
-          src: `${BUNDLE_PUBLIC_PATH}/${src}`,
-          key: src,
-        })),
-      }),
-    )}`
-      // move styles from body to the head
-      .replace(/(<\/head>[\s]*<body[\s>].*)(<style.+\/style>)/gi, '$2$1'),
-  );
+  if (staticContext.url) {
+    res.redirect(
+      staticContext.statusCode === 301 ? 301 : 302,
+      staticContext.url,
+    );
+  } else {
+    res.status(staticContext.statusCode || 200).send(output);
+  }
 };
 
 module.exports = renderController;

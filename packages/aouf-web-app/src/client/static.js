@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import App from './app';
+import StaticWrapper from './components/App/StaticWrapper';
+import App from './components/App';
 import { BUNDLE_DOM_NODE_ID } from './constants';
 
-const Document = ({ links = [], scripts = [] }) => (
+const Document = ({ location, staticContext, links = [], scripts = [] }) => (
   <html>
     <head>
       <title>App</title>
@@ -13,7 +14,9 @@ const Document = ({ links = [], scripts = [] }) => (
     </head>
     <body>
       <div id={BUNDLE_DOM_NODE_ID}>
-        <App />
+        <StaticWrapper location={location} context={staticContext}>
+          <App />
+        </StaticWrapper>
       </div>
       {scripts.map(script => (
         <script {...script} />

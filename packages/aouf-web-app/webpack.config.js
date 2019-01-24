@@ -51,7 +51,7 @@ const server = {
   name: 'server',
   target: 'node',
   entry: {
-    main: './src/client/document',
+    main: './src/client/static',
   },
   output: {
     ...commonConfig.output,
