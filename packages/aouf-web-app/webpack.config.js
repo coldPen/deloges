@@ -75,7 +75,6 @@ const client = {
         };
       },
     }),
-    new webpack.HotModuleReplacementPlugin(),
   ],
 };
 

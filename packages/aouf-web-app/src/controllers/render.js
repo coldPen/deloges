@@ -41,18 +41,22 @@ const client = loadClient();
 
 const renderController = (req, res) => {
   const { Document, App, scripts } = DEV_ENV ? loadClient() : client;
+  const html = `<!doctype html>\n${renderToStaticMarkup(
+    React.createElement(Document, {
+      id: BUNDLE_DOM_NODE_ID,
+      body: renderToString(React.createElement(App)),
+      scripts: scripts.map(src => ({
+        src: `${BUNDLE_PUBLIC_PATH}/${src}`,
+        key: src,
+      })),
+    }),
+  )}`;
+  const styles = html.match(/<style.+\/style>/gi);
 
   res.send(
-    `<!doctype html>\n${renderToStaticMarkup(
-      React.createElement(Document, {
-        id: BUNDLE_DOM_NODE_ID,
-        body: renderToString(React.createElement(App)),
-        scripts: scripts.map(src => ({
-          src: `${BUNDLE_PUBLIC_PATH}/${src}`,
-          key: src,
-        })),
-      }),
-    )}`,
+    html
+      .replace(/<style.+\/style>/gi, '')
+      .replace(/<\/head>/, `${styles.join('\n')}</head>`),
   );
 };
 

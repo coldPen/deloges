@@ -13,6 +13,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@emotion/core": "^10.0.6",
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
@@ -26,6 +27,7 @@
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
+    "@emotion/babel-preset-css-prop": "^10.0.6",
     "@fadioit/eslint-config": "^0.2.0",
     "babel-loader": "^8.0.5",
     "eslint": "^5.12.1",
