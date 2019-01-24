@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import App from './app';
+import { BUNDLE_DOM_NODE_ID } from './constants';
 
-const Document = ({ id = 'app', links = [], scripts = [] }) => (
+const Document = ({ links = [], scripts = [] }) => (
   <html>
     <head>
       <title>App</title>
@@ -11,7 +12,7 @@ const Document = ({ id = 'app', links = [], scripts = [] }) => (
       ))}
     </head>
     <body>
-      <div id={id}>
+      <div id={BUNDLE_DOM_NODE_ID}>
         <App />
       </div>
       {scripts.map(script => (

@@ -7,7 +7,6 @@ const { renderToString, renderToStaticMarkup } = require('react-dom/server');
 const {
   DEV_ENV,
   BUNDLE_MANIFEST_OUTPUT,
-  BUNDLE_DOM_NODE_ID,
   BUNDLE_SERVER_PATH,
   BUNDLE_CLIENT_PATH,
   BUNDLE_PUBLIC_PATH,
@@ -27,7 +26,6 @@ const loadClient = () => {
   const { 'main.js': component } = JSON.parse(
     fs.readFileSync(SERVER_MANIFEST_PATH, 'utf8'),
   );
-  const { scripts } = JSON.parse(fs.readFileSync(CLIENT_MANIFEST_PATH, 'utf8'));
 
   return {
     scripts: JSON.parse(fs.readFileSync(CLIENT_MANIFEST_PATH, 'utf8')).scripts,
@@ -44,7 +42,6 @@ const renderController = (req, res) => {
   res.send(
     `<!doctype html>\n${renderToString(
       React.createElement(Component, {
-        id: BUNDLE_DOM_NODE_ID,
         scripts: scripts.map(src => ({
           src: `${BUNDLE_PUBLIC_PATH}/${src}`,
           key: src,
