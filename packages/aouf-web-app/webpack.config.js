@@ -26,6 +26,18 @@ const commonConfig = {
           },
         ],
       },
+      {
+        test: /src\/public\//,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              emitFile: false,
+            },
+          },
+        ],
+      },
     ],
   },
   output: {
@@ -51,6 +63,23 @@ const server = {
       output: BUNDLE_MANIFEST_OUTPUT,
     }),
   ],
+  module: {
+    rules: [
+      ...commonConfig.module.rules,
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[hash].[ext]',
+              emitFile: false,
+            },
+          },
+        ],
+      },
+    ],
+  },
   externals: [nodeExternals()],
   stats: 'minimal',
 };
@@ -64,6 +93,22 @@ const client = {
   output: {
     ...commonConfig.output,
     path: path.resolve(__dirname, BUNDLE_CLIENT_PATH),
+  },
+  module: {
+    rules: [
+      ...commonConfig.module.rules,
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[hash].[ext]',
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new AssetsManifest({
