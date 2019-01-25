@@ -1,8 +1,7 @@
 const Router = require('express-promise-router');
-const session = require('express-session');
 const cors = require('cors');
 const morgan = require('morgan');
-const { DEV_ENV, COOKIE_SECRET, CORS_ORIGIN } = require('../constants');
+const { DEV_ENV, CORS_ORIGIN } = require('../constants');
 
 const commonMiddleware = Router();
 

@@ -1,12 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
-const webpack = require('webpack');
 const AssetsManifest = require('webpack-assets-manifest');
 const nodeExternals = require('webpack-node-externals');
 
 const {
   DEV_ENV,
-  CORS_ORIGIN,
   BUNDLE_MANIFEST_OUTPUT,
   BUNDLE_SERVER_PATH,
   BUNDLE_CLIENT_PATH,
@@ -113,12 +111,10 @@ const client = {
   plugins: [
     new AssetsManifest({
       output: BUNDLE_MANIFEST_OUTPUT,
-      transform: assets => {
-        return {
-          assets,
-          scripts: [assets['main.js']],
-        };
-      },
+      transform: assets => ({
+        assets,
+        scripts: [assets['main.js']],
+      }),
     }),
   ],
 };

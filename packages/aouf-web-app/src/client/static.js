@@ -4,13 +4,16 @@ import StaticWrapper from './components/App/StaticWrapper';
 import App from './components/App';
 import { BUNDLE_DOM_NODE_ID } from './constants';
 
-const Document = ({ location, staticContext, links = [], scripts = [] }) => (
-  <html>
+const Document = ({
+  location,
+  staticContext,
+  scripts = [],
+  lang = 'fr',
+  dir = 'ltr',
+}) => (
+  <html lang={lang} dir={dir}>
     <head>
       <title>App</title>
-      {links.map(link => (
-        <link {...link} />
-      ))}
     </head>
     <body>
       <div id={BUNDLE_DOM_NODE_ID}>
@@ -26,9 +29,11 @@ const Document = ({ location, staticContext, links = [], scripts = [] }) => (
 );
 
 Document.propTypes = {
-  id: PropTypes.string,
-  links: PropTypes.arrayOf(PropTypes.object),
-  scripts: PropTypes.arrayOf(PropTypes.object),
+  location: PropTypes.string,
+  staticContext: PropTypes.object,
+  scripts: PropTypes.arrayOf(PropTypes.object.isRequired),
+  lang: PropTypes.string,
+  dir: PropTypes.string,
 };
 
 export default Document;

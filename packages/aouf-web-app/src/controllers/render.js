@@ -1,19 +1,14 @@
 const fs = require('fs');
 const path = require('path');
-const express = require('express');
 const React = require('react');
-const { renderToString, renderToStaticMarkup } = require('react-dom/server');
+const { renderToString } = require('react-dom/server');
 
 const {
   DEV_ENV,
-  BUNDLE_MANIFEST_OUTPUT,
   BUNDLE_SERVER_PATH,
   BUNDLE_CLIENT_PATH,
   BUNDLE_PUBLIC_PATH,
 } = require('../constants');
-
-const resolveBuildFile = filename =>
-  path.resolve(`./${BUNDLE_SERVER_PATH}/${filename}`);
 
 const SERVER_MANIFEST_PATH = path.resolve(
   `${BUNDLE_SERVER_PATH}/manifest.json`,
@@ -29,6 +24,7 @@ const loadClient = () => {
 
   return {
     scripts: JSON.parse(fs.readFileSync(CLIENT_MANIFEST_PATH, 'utf8')).scripts,
+    // eslint-disable-next-line import/no-dynamic-require
     Component: require(path.resolve(`${BUNDLE_SERVER_PATH}/${component}`))
       .default,
   };

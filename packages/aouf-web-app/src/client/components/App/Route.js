@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Redirect, Route } from 'react-router-dom';
 
 const AppRoute = ({ component: Component, ...props }) => (
@@ -19,5 +20,10 @@ const AppRoute = ({ component: Component, ...props }) => (
     }}
   />
 );
+
+AppRoute.propTypes = {
+  component: PropTypes.oneOfType([PropTypes.func.isRequired, PropTypes.string])
+    .isRequired,
+};
 
 export default AppRoute;
